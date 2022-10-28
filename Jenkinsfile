@@ -1,15 +1,15 @@
 pipeline {
     agent any
 
-     //options {
+     options {
         //Disable concurrentbuilds for the same job
-        //disableConcurrentBuilds()
+        disableConcurrentBuilds()
         // Colorize the console log
-        //ansiColor("xterm")          
+        ansiColor("xterm")          
         // Add timestamps to console log
-        //timestamps()
+        timestamps()
         
-    //}
+    }
 
     environment {
         AWS_ACCESS_KEY = credentials('aws_access_key')
