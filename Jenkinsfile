@@ -91,10 +91,10 @@ pipeline {
                         echo "VERSION: ${VERSION}"
                         JARNAME = ARTIFACTID+'-'+VERSION+'.jar'
 
-                        sh "aws s3 cp target/${JARNAME} s3://bermtec228/lambda-prod/"
+                        sh "aws s3 cp target/${JARNAME} s3://akhilaartham/lambda-prod/"
                         //  sh './deploy-test.sh $AWS_ACCESS_KEY $AWS_SECRET_KEY'
                         // if (does_lambda_exist('prodfunction')) {
-                            sh "aws lambda update-function-code --function-name prodfunction --s3-bucket bermtec228 --s3-key lambda-prod/${JARNAME}"
+                            sh "aws lambda update-function-code --function-name java-lambda --s3-bucket akhilaartham --s3-key lambda-prod/${JARNAME}"
                         //}  
                     }
                 }
@@ -106,7 +106,7 @@ pipeline {
     post {
       failure {
         echo 'failed'
-             mail to: 'teambermtec@gmail.com',
+             mail to: 'arthamakhila1411@gmail.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_NUMBER}"
       }
